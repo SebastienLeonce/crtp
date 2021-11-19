@@ -289,7 +289,7 @@ auto operator/(dense_expr_t<E1> const &l, int const r) {
 
 template <typename T> auto sum(T const &s) -> typename T::element_t {
   // On récupère le type des éléments
-  using elmt_t = std::decay_t<decltype(std::declval<T>()[0])>;;
+  using elmt_t = std::decay_t<decltype(std::declval<T>()[0])>;
 
   // On récupère la taille de l'expression dense avec
   // la méthode size() *du type sous-jacent*
@@ -345,9 +345,11 @@ int main() {
             << "sum(op) = " << sum(op) << '\n'
             << "sum(va) = " << sum(va) << '\n'
             << "mean(op) = " << mean(op) << '\n'
-            << "mean(va) = " << mean(va) << '\n';
-  //           << "mean(et::add_t(op, op)) = " << mean(et::add_t(op, op)) << '\n'
-  //           << "mean(op + op) = " << mean(op + op) << '\n';
+            << "mean(va) = " << mean(va) << '\n'
+            << "mean(et::add_t(op, op)) = " << mean(et::add_t(op, op)) << '\n'
+            << "mean(op + op) = " << mean(op + op) << '\n'
+            << "mean(et::add_t(va, va)) = " << mean(et::add_t(va, va)) << '\n'
+            << "mean(va + va) = " << mean(va + va) << '\n';
 
   // v_t vc;
   // vc = va + vb;
